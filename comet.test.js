@@ -19,14 +19,13 @@ asyncTest( "success", function() {
 } );
 
 asyncTest( "faild", function() {
-	expect( 2 );
+	expect( 1 );
 	stop();
-	console.log( 22 );
 	var connection = new comet("data/json2.php?sleep=5");
 	connection.a( "close", function( e ) {
-		console.log( arguments );
 	} ).a( "error", function( e, data ) {
-		console.log( arguments );
+		start();
+		ok( true, "connect error" );
 	} );
 } );
 
